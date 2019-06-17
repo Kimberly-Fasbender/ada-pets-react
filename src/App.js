@@ -20,9 +20,6 @@ class App extends Component {
     };
   }
 
-
-
-
   render() {
     const { currentPet } = this.state;
     
