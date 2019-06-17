@@ -20,9 +20,28 @@ class App extends Component {
     };
   }
 
+  
+
   render() {
     const { currentPet } = this.state;
-    
+  
+    const onSelectPet = (pet) => {
+      let newState = pet;
+      
+      this.setState({
+        currentPet: newState,
+      });
+    }
+
+    const displayCurrentPet = () => {
+
+      if (currentPet !== undefined) {
+        return (
+        <PetDetails currentPet={currentPet} />
+        );
+      };
+    }
+
     return (
       <main className="App">
         <header className="app-header">
@@ -33,7 +52,11 @@ class App extends Component {
           <SearchBar />
         </section>
           { /* Wave 2:  Where Pet Details should appear */ }
+          {displayCurrentPet()}
         <section className="pet-list-wrapper">
+          <PetList 
+          pets={this.state.petList}
+          onSelectPet={onSelectPet} />
           { /* Wave 1:  Where PetList should appear */ }
         </section>
         <section className="new-pet-form-wrapper">
